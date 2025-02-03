@@ -1,0 +1,21 @@
+{
+    "name": "Chateando",
+    "short_name": "Hachi",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffbf00",
+    "theme_color": "#ffbf00",
+    "icons": [
+      {
+        "src": "/imagen/hogar.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/imagen/hogar.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ]
+  }
+  
