@@ -9,6 +9,7 @@ const URLS_A_CACHEAR = [
 
 // 📥 Evento de instalación: almacena en caché los recursos estáticos
 self.addEventListener('install', event => {
+  console.log('se ha instalado');
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
       console.log('📦 Cache creada y recursos guardados');
@@ -19,6 +20,7 @@ self.addEventListener('install', event => {
 
 // ✅ Evento de activación: limpiar cachés antiguas
 self.addEventListener('activate', event => {
+  console.log('has abierto la ventana');
   event.waitUntil(
     caches.keys().then(keys => {
       return Promise.all(
@@ -35,6 +37,7 @@ self.addEventListener('activate', event => {
 
 // 🔄 Evento de fetch: intercepta peticiones y sirve desde la caché si es posible
 self.addEventListener('fetch', event => {
+  console.log('hay conexion');
   event.respondWith(
     caches.match(event.request).then(response => {
       return response || fetch(event.request);

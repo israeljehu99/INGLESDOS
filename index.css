@@ -13,7 +13,7 @@
    height: 100vh; 
 }
 
-@media(max-width:600px) {
+@media(max-width:700px) {
     .pages {
         background-color: purple;
         display: flex;
@@ -38,7 +38,13 @@
 
 
 
-@media(min-width:600px) {
+@media(min-width:700px) {
+    button{
+        position: fixed;
+        width: 40%;
+        height: 20%;
+        background-color: aqua;
+    }
     .pages {
         background-color: beige;
         display: flex;
