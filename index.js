@@ -4,26 +4,15 @@ if ('serviceWorker' in navigator) {
       .catch(err => console.error('❌ Error al registrar SW', err));
   }
 
+  let deferredPrompt;
 
-  if ('serviceWorker' in navigator && 'SyncManager' in window) {
-    navigator.serviceWorker.ready.then(reg => {
-      return reg.sync.register('sync-tarea');
-    }).then(() => {
-      console.log('✅ Sincronización en segundo plano registrada');
-    }).catch(err => console.error('❌ Error al registrar sync', err));
-  }
-
-
-  if ('Notification' in window && 'serviceWorker' in navigator) {
-    Notification.requestPermission().then(permission => {
-      if (permission === 'granted') {
-        console.log('🔔 Notificaciones permitidas');
-      } else {
-        console.log('❌ Notificaciones denegadas');
-      }
-    });
-  }
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault(); // Evita que el navegador muestre la instalación automáticamente
+    deferredPrompt = e; // Guarda el evento para usarlo más tarde
+    document.getElementById('install-btn').style.display = 'block'; // Muestra el botón de instalación
+  });
   
+
   
   
 
