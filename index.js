@@ -13,7 +13,24 @@ if ('serviceWorker' in navigator) {
   });
   
 
+  document.getElementById('install-btn').addEventListener('click', () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt(); // Muestra la ventana de instalación
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('El usuario aceptó la instalación');
+        } else {
+          console.log('El usuario canceló la instalación');
+        }
+        deferredPrompt = null; // Resetea el evento
+      });
+    }
+  });
   
+  window.addEventListener('appinstalled', () => {
+    console.log('PWA instalada');
+    document.getElementById('install-btn').style.display = 'none'; // Ocultar el botón después de instalar
+  });
   
 
   let boton = document.getElementById("boton");
